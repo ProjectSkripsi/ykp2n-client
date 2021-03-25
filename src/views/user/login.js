@@ -70,7 +70,7 @@ const Login = ({ history, loading, error, loginUserAction, isLogin }) => {
         <Colxx xxs="12" md="10" className="mx-auto my-auto">
           <Card className="auth-card">
             <div className="position-relative image-side ">
-              <p className="text-white h2">Vector Space Model COVID-19</p>
+              <p className="text-white h2">YKP2N Dashboard</p>
               <p className="white mb-0">
                 Silahkan gunakan email & password untuk login.
                 <br />
@@ -78,7 +78,7 @@ const Login = ({ history, loading, error, loginUserAction, isLogin }) => {
             </div>
             <div className="form-side">
               <Row>
-                <Col xs="2">
+                {/* <Col xs="2">
                   <NavLink to="/" className="white">
                     <img
                       src="/assets/logos/covid.png"
@@ -88,11 +88,9 @@ const Login = ({ history, loading, error, loginUserAction, isLogin }) => {
                       style={{ marginLeft: "-30px", marginBottom: "20px" }}
                     />
                   </NavLink>
-                </Col>
+                </Col> */}
                 <Col xs="10">
-                  <p className="text-black h5 ml-3 mt-4">
-                    Vector Space Model COVID-19
-                  </p>
+                  <p className="text-black h5 ">YKP2N Dashboard</p>
                 </Col>
               </Row>
 

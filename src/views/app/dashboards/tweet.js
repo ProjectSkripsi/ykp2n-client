@@ -11,56 +11,6 @@ import { get } from "lodash";
 const colors = ThemeColors();
 
 const TweetDashboard = ({ match }) => {
-  // const dispatch = useDispatch();
-  // const { dataHandle, dataVaccine } = useSelector((state) => state.tweetApp);
-
-  // const dataVaccines = {
-  //   labels: ["Positif", "Negatif"],
-  //   datasets: [
-  //     {
-  //       label: "",
-  //       borderColor: [
-  //         // colors.themeColor3,
-  //         colors.themeColor2,
-  //         colors.themeColor1,
-  //       ],
-  //       backgroundColor: [
-  //         // colors.themeColor3_10,
-  //         colors.themeColor2_10,
-  //         colors.themeColor1_10,
-  //       ],
-  //       // borderWidth: 2,
-  //       data: [get(dataVaccine, "positif", 0), get(dataVaccine, "negatif", 0)],
-  //     },
-  //   ],
-  // };
-
-  // const dataPenanganan = {
-  //   labels: ["Positif", "Negatif"],
-  //   datasets: [
-  //     {
-  //       label: "",
-  //       borderColor: [
-  //         // colors.themeColor3,
-  //         colors.themeColor2,
-  //         colors.themeColor1,
-  //       ],
-  //       backgroundColor: [
-  //         // colors.themeColor3_10,
-  //         colors.themeColor2_10,
-  //         colors.themeColor1_10,
-  //       ],
-  //       // borderWidth: 2,
-  //       data: [get(dataHandle, "positif", 0), get(dataHandle, "negatif", 0)],
-  //     },
-  //   ],
-  // };
-
-  // useEffect(() => {
-  //   dispatch(getStatisticRequest("handle", (next) => {}));
-  //   dispatch(getStatisticRequest("handlex", (next) => {}));
-  // }, []);
-
   return (
     <>
       <Row>
@@ -69,24 +19,6 @@ const TweetDashboard = ({ match }) => {
           <Separator className="mb-5" />
         </Colxx>
       </Row>
-      halo
-      {/* <Row>
-        <Colxx lg="6" md="12" className="mb-4">
-          <StatistikChart
-            chartClass="dashboard-donut-chart"
-            title="dashboards.statistic-vaccine"
-            data={dataVaccines}
-          />
-        </Colxx>
-
-        <Colxx lg="6" md="12" className="mb-4">
-          <StatistikChart
-            chartClass="dashboard-donut-chart"
-            title="dashboards.statistic-penanganan"
-            data={dataPenanganan}
-          />
-        </Colxx>
-      </Row> */}
     </>
   );
 };

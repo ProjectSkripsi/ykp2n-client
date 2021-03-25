@@ -344,30 +344,12 @@ const data = [
   //   ],
   // },
 
-  // {
-  //   id: "tweet",
-  //   icon: "simple-icon-docs",
-  //   label: "menu.master-tweet",
-  //   to: `${adminRoot}/tweet`,
-  //   subs: [
-  //     {
-  //       icon: "iconsminds-big-data",
-  //       label: "menu.tweet-covid",
-  //       to: `${adminRoot}/tweet/tweet-covid`,
-  //     },
-
-  //     {
-  //       icon: "iconsminds-data-center",
-  //       label: "menu.list",
-  //       to: `${adminRoot}/tweet/data-training`,
-  //     },
-  //     {
-  //       icon: "simple-icon-map",
-  //       label: "menu.location",
-  //       to: `${adminRoot}/tweet/maps`,
-  //     },
-  //   ],
-  // },
+  {
+    id: "patient",
+    icon: "simple-icon-docs",
+    label: "menu.master-patient",
+    to: `${adminRoot}/patient`,
+  },
   {
     id: "officer",
     icon: "simple-icon-people",
@@ -380,18 +362,5 @@ const data = [
     label: "menu.master-user",
     to: `${adminRoot}/account-setting`,
   },
-  // {
-  //   id: 'blankpage',
-  //   icon: 'simple-icon-book-open',
-  //   label: 'menu.blank-page',
-  //   to: `${adminRoot}/blank-page`,
-  // },
-  // {
-  //   id: 'docs',
-  //   icon: 'iconsminds-library',
-  //   label: 'menu.docs',
-  //   to: 'https://gogo-react-docs.coloredstrategies.com/',
-  //   newWindow: true,
-  // },
 ];
 export default data;

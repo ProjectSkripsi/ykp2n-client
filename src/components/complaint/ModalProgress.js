@@ -1,21 +1,7 @@
 import React from "react";
-import {
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  Label,
-  Badge,
-} from "reactstrap";
-import {
-  AvForm,
-  AvGroup,
-  AvInput,
-  AvFeedback,
-  AvRadioGroup,
-  AvRadio,
-} from "availity-reactstrap-validation";
-import { get } from "lodash";
+import { Modal, ModalHeader, ModalBody, Badge, List } from "reactstrap";
+
+import { get, isEmpty } from "lodash";
 import moment from "moment";
 
 const ModalProgress = ({
@@ -25,69 +11,56 @@ const ModalProgress = ({
   onUpdateClassification,
   onChange,
 }) => {
+  const renderItem = (data) => {
+    if (!isEmpty(data)) {
+      return (
+        <List type="unstyled">
+          <ul>
+            {data.map((item) => (
+              <li key={item._id}>{item.name}</li>
+            ))}
+          </ul>
+        </List>
+      );
+    }
+  };
+
   return (
     <Modal
       isOpen={modalProgressOpen}
       toggle={() => setModalProgressOpen(!modalProgressOpen)}
     >
-      <ModalHeader>Update Klasifikasi</ModalHeader>
+      <ModalHeader>
+        {data.name} - {data.age} Tahun{" "}
+      </ModalHeader>
       <ModalBody>
-        <p className="mb-3" style={{ textAlign: "justify" }}>
-          {data.text}
+        <p className="text-muted text-small mb-2">NIK</p>
+        <p className="mb-3">{data.nik}</p>
+        <p className="text-muted text-small mb-2">No Handphone</p>
+        <p className="mb-3">{data.contact}</p>
+        <p className="text-muted text-small mb-2">Alamat</p>
+        <p className="mb-3">{data.address}</p>
+        <p className="text-muted text-small mb-2">Tempat & Tanggal Lahir</p>
+        <p className="mb-3">
+          {data.placeBirth} - {moment(data.dateBirth).format("LL")}
         </p>
 
-        <p className="text-muted text-small mb-2">Dibuat</p>
+        <p className="text-muted text-small mb-2">Gejala</p>
+        {renderItem(data.symptomsId || [])}
 
-        <p className="mb-3">{moment(data.createdAt).format("ll")}</p>
-
-        <p className="text-muted text-small mb-2">Status</p>
+        <p className="text-muted text-small mb-2">Diagnosa</p>
         <p className="mb-3">
           <Badge color="outline-secondary" className="mb-1 mr-1" pill>
-            {data.classification || "-"}
+            {data.result} - {data.criteriaStatus || "-"}
           </Badge>
         </p>
 
-        <p className="text-muted text-small mb-2">Update Klasifikasi</p>
-        <AvForm
-          className="av-tooltip tooltip-label-right"
-          onSubmit={(event, errors, values) =>
-            onUpdateClassification(event, errors, values)
-          }
-        >
-          <AvRadioGroup
-            className="error-l-150 "
-            name="classificationCode"
-            value={Number(data.classificationCode) || 0}
-            required
-          >
-            <AvRadio
-              customInput
-              onChange={onChange}
-              label="Sentimen Positif Penanganan COVID-19"
-              value={1}
-            />
-            <AvRadio
-              customInput
-              onChange={onChange}
-              label="Sentimen Negatif Penanganan COVID-19"
-              value={2}
-            />
-            <AvRadio
-              customInput
-              onChange={onChange}
-              label="Sentimen Positif Vaksinasi COVID-19"
-              value={3}
-            />
-            <AvRadio
-              customInput
-              onChange={onChange}
-              label="Sentimen Negatif Vaksinasi COVID-19"
-              value={4}
-            />
-          </AvRadioGroup>
-          <hr />
-          <Button color="primary">Update</Button>{" "}
-        </AvForm>
+        <p className="text-muted text-small mb-2">Diperiksa </p>
+        <p className="mb-3">
+          {" "}
+          {get(data, "inputBy.name", "")} -{" "}
+          {moment(data.createdAt).format("LL")}
+        </p>
       </ModalBody>
     </Modal>
   );

@@ -19,7 +19,7 @@ const BlankPage = React.lazy(() =>
   import(/* webpackChunkName: "blank-page" */ "./blank-page")
 );
 
-const Tweets = React.lazy(() => import("./tweet"));
+const Patient = React.lazy(() => import("./Patient"));
 
 const MasterUser = React.lazy(() =>
   import(/* webpackChunkName: "applications" */ "./account/user")
@@ -66,8 +66,8 @@ const App = ({ match }) => {
               render={(props) => <MasterOfficer {...props} />}
             />
             <Route
-              path={`${match.url}/tweet`}
-              render={(props) => <Tweets {...props} />}
+              path={`${match.url}/patient`}
+              render={(props) => <Patient {...props} />}
             />
             <Route
               path={`${match.url}/account-setting`}

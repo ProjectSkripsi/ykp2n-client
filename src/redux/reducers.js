@@ -6,7 +6,7 @@ import todoApp from "./todo/reducer";
 
 import surveyListApp from "./surveyList/reducer";
 import surveyDetailApp from "./surveyDetail/reducer";
-import tweetApp from "./tweet/reducer";
+import officer from "./officer/reducer";
 
 const reducers = combineReducers({
   menu,
@@ -15,7 +15,7 @@ const reducers = combineReducers({
   todoApp,
   surveyListApp,
   surveyDetailApp,
-  tweetApp,
+  officer,
 });
 
 export default reducers;

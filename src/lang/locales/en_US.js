@@ -160,8 +160,10 @@ module.exports = {
   "menu.account-setting": "Ubah Profil",
   "menu.data-training": "Data Training",
   "menu.tweet-covid": "Tweet Covid-19",
-  "menu.statistic": "Statistik Vector Model Covid-19",
+  "menu.statistic": "Welcome Super Admin",
   "menu.master-officer": "Master Petugas",
+  "menu.patient": "Daftar Pasien",
+  "menu.master-patient": "Daftar Pasien",
 
   /* 04.Dashboards */
   "dashboards.pending-orders": "Pending Orders",

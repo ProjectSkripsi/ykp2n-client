@@ -12,12 +12,15 @@ import {
   InputGroupAddon,
   Input,
   Button,
+  CardFooter,
+  CardHeader,
+  List,
 } from "reactstrap";
 import { NavLink } from "react-router-dom";
 import moment from "moment";
 import { Colxx } from "../common/CustomBootstrap";
-import Linkify from "react-linkify";
-import Lightbox from "react-image-lightbox";
+
+import { get } from "lodash";
 
 const TodoListItem = ({
   item,
@@ -32,38 +35,32 @@ const TodoListItem = ({
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
   const [dropdownBasicOpen, setDropdownBasicOpen] = useState(false);
+
+  const renderItem = (data) => {
+    return (
+      <List type="unstyled">
+        <ul>
+          {data.map((i) => (
+            <li key={i._id}>{i.name}</li>
+          ))}
+        </ul>
+      </List>
+    );
+  };
+
   return (
     <Colxx xxs="12" className="mb-3">
       <Card className={className}>
         <CardBody>
           <div className="d-flex flex-row mb-3 justify-content-between">
-            <a
-              href={`https://twitter.com/${item.user.screen_name}`}
-              target="_blank"
-            >
-              <img
-                src={
-                  item.user.profile_image_url_https ||
-                  "/assets/img/profiles/l-9.jpg"
-                }
-                alt="avatar"
-                className="img-thumbnail border-0 rounded-circle list-thumbnail align-self-center xsmall"
-              />
-            </a>
-            <div className="pl-3 flex-grow-1">
-              <a
-                href={`https://twitter.com/${item.user.screen_name}`}
-                target="_blank"
-              >
-                <p className="font-weight-medium mb-0 ">
-                  {item.user.name} - @{item.user.screen_name}
-                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                  <Badge color="info">{item.classification}</Badge>
-                </p>
-                <p className="text-muted mb-0 text-small pt-1">
-                  {item.user.description}
-                </p>
-              </a>
+            <div className="flex-grow-1">
+              <p className="font-weight-medium mb-0 ">
+                <b>{item.name} </b> - {item.age} Tahun | {item.contact}
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                <Badge color={item.result === "Positif" ? "danger" : "info"}>
+                  {item.result} - {item.criteriaStatus}
+                </Badge>
+              </p>
             </div>
 
             <div className="comment-likes">
@@ -79,9 +76,9 @@ const TodoListItem = ({
                   <DropdownItem
                     onClick={() => onUpdateProgress(item, "criteria")}
                   >
-                    Update Klasifikasi
+                    Lihat detail
                   </DropdownItem>
-
+                  <hr />
                   <DropdownItem onClick={() => deleteData(item._id)}>
                     Hapus
                   </DropdownItem>
@@ -89,15 +86,12 @@ const TodoListItem = ({
               </ButtonDropdown>
             </div>
           </div>
-          <div className="mt-4">
-            <Linkify>
-              {item.text}
-              <p className="text-muted  text-small">
-                {moment(item.createdAt).startOf("hour").fromNow()}
-              </p>
-            </Linkify>
-          </div>
+          <div className="mt-4">{renderItem(item.symptomsId)}</div>
         </CardBody>
+        <CardFooter className="text-muted">
+          Diperiksa oleh {get(item, "inputBy.name", "-")} -{" "}
+          {moment(item.createdAt).startOf("minutes").fromNow()}
+        </CardFooter>
       </Card>
     </Colxx>
   );
