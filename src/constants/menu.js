@@ -344,30 +344,30 @@ const data = [
   //   ],
   // },
 
-  {
-    id: "tweet",
-    icon: "simple-icon-docs",
-    label: "menu.master-tweet",
-    to: `${adminRoot}/tweet`,
-    subs: [
-      {
-        icon: "iconsminds-big-data",
-        label: "menu.tweet-covid",
-        to: `${adminRoot}/tweet/tweet-covid`,
-      },
+  // {
+  //   id: "tweet",
+  //   icon: "simple-icon-docs",
+  //   label: "menu.master-tweet",
+  //   to: `${adminRoot}/tweet`,
+  //   subs: [
+  //     {
+  //       icon: "iconsminds-big-data",
+  //       label: "menu.tweet-covid",
+  //       to: `${adminRoot}/tweet/tweet-covid`,
+  //     },
 
-      {
-        icon: "iconsminds-data-center",
-        label: "menu.list",
-        to: `${adminRoot}/tweet/data-training`,
-      },
-      // {
-      //   icon: "simple-icon-map",
-      //   label: "menu.location",
-      //   to: `${adminRoot}/tweet/maps`,
-      // },
-    ],
-  },
+  //     {
+  //       icon: "iconsminds-data-center",
+  //       label: "menu.list",
+  //       to: `${adminRoot}/tweet/data-training`,
+  //     },
+  //     {
+  //       icon: "simple-icon-map",
+  //       label: "menu.location",
+  //       to: `${adminRoot}/tweet/maps`,
+  //     },
+  //   ],
+  // },
   {
     id: "officer",
     icon: "simple-icon-people",

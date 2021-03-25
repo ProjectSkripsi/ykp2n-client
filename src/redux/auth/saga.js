@@ -43,10 +43,15 @@ function* loginWithEmailPassword({ payload }) {
     const loginUser = yield call(userLoginService, { email, password });
     if (loginUser.status === 200) {
       const item = { uid: loginUser.data._id, ...loginUser.data };
-
-      setCurrentUser(item);
-      yield put(loginUserSuccess(item));
-      history.push(adminRoot);
+      if (item.role === "admin") {
+        setCurrentUser(item);
+        yield put(loginUserSuccess(item));
+        history.push(adminRoot);
+      } else {
+        alert("Your not have access");
+        history.push("/");
+        yield put(loginUserError(loginUser.message));
+      }
     } else {
       yield put(loginUserError(loginUser.message));
     }
