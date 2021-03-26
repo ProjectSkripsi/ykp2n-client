@@ -116,11 +116,19 @@ export const UPDATE_OFFICER_REQUEST = "UPDATE_OFFICER_REQUEST";
 export const UPDATE_OFFICER_SUCCESS = "UPDATE_OFFICER_SUCCESS";
 export const UPDATE_OFFICER_ERROR = "UPDATE_OFFICER_ERROR";
 
+export const ADD_SYMPTOMS_REQUEST = "ADD_SYMPTOMS_REQUEST";
+export const ADD_SYMPTOMS_SUCCESS = "ADD_SYMPTOMS_SUCCESS";
+export const ADD_SYMPTOMS_ERROR = "ADD_SYMPTOMS_SUCCESS";
+
+export const UPDATE_SYMPTOMS_REQUEST = "UPDATE_SYMPTOMS_REQUEST";
+export const UPDATE_SYMPTOMS_SUCCESS = "UPDATE_SYMPTOMS_SUCCESS";
+export const UPDATE_SYMPTOMS_ERROR = "UPDATE_SYMPTOMS_ERROR";
+
 export * from "./menu/actions";
 export * from "./settings/actions";
 export * from "./auth/actions";
 export * from "./todo/actions";
 export * from "./surveyList/actions";
 export * from "./surveyDetail/actions";
-
+export * from "./symptoms/actions";
 export * from "./officer/actions";

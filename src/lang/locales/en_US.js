@@ -164,6 +164,8 @@ module.exports = {
   "menu.master-officer": "Master Petugas",
   "menu.patient": "Daftar Pasien",
   "menu.master-patient": "Daftar Pasien",
+  "menu.master-symptoms": "Master Gejala",
+  "menu.symptoms": "Daftar Gejala",
 
   /* 04.Dashboards */
   "dashboards.pending-orders": "Pending Orders",

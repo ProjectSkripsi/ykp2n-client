@@ -343,6 +343,12 @@ const data = [
   //     },
   //   ],
   // },
+  {
+    id: "symptoms",
+    icon: "simple-icon-energy",
+    label: "menu.master-symptoms",
+    to: `${adminRoot}/symptoms`,
+  },
 
   {
     id: "patient",

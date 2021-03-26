@@ -5,6 +5,7 @@ import todoSagas from "./todo/saga";
 import surveyListSagas from "./surveyList/saga";
 import surveyDetailSagas from "./surveyDetail/saga";
 import officerSagas from "./officer/saga";
+import symptomsSagas from "./symptoms/saga";
 
 export default function* rootSaga(getState) {
   yield all([
@@ -13,5 +14,6 @@ export default function* rootSaga(getState) {
     surveyListSagas(),
     surveyDetailSagas(),
     officerSagas(),
+    symptomsSagas(),
   ]);
 }

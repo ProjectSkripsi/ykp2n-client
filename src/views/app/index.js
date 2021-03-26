@@ -8,19 +8,16 @@ import AppLayout from "../../layout/AppLayout";
 const Dashboards = React.lazy(() =>
   import(/* webpackChunkName: "dashboards" */ "./dashboards")
 );
-const Pages = React.lazy(() =>
-  import(/* webpackChunkName: "pages" */ "./pages")
-);
-const Applications = React.lazy(() =>
-  import(/* webpackChunkName: "applications" */ "./applications")
-);
-const Ui = React.lazy(() => import(/* webpackChunkName: "ui" */ "./ui"));
-const BlankPage = React.lazy(() =>
-  import(/* webpackChunkName: "blank-page" */ "./blank-page")
-);
+// const Pages = React.lazy(() =>
+//   import(/* webpackChunkName: "pages" */ "./pages")
+// );
+// const Applications = React.lazy(() =>
+//   import(/* webpackChunkName: "applications" */ "./applications")
+// );
+// const Ui = React.lazy(() => import(/* webpackChunkName: "ui" */ "./ui"));
 
 const Patient = React.lazy(() => import("./Patient"));
-
+const Symptoms = React.lazy(() => import("./symptoms"));
 const MasterUser = React.lazy(() =>
   import(/* webpackChunkName: "applications" */ "./account/user")
 );
@@ -44,7 +41,7 @@ const App = ({ match }) => {
               path={`${match.url}/dashboards`}
               render={(props) => <Dashboards {...props} />}
             />
-            <Route
+            {/* <Route
               path={`${match.url}/applications`}
               render={(props) => <Applications {...props} />}
             />
@@ -56,10 +53,11 @@ const App = ({ match }) => {
             <Route
               path={`${match.url}/ui`}
               render={(props) => <Ui {...props} />}
-            />
+            /> */}
+
             <Route
-              path={`${match.url}/blank-page`}
-              render={(props) => <BlankPage {...props} />}
+              path={`${match.url}/symptoms`}
+              render={(props) => <Symptoms {...props} />}
             />
             <Route
               path={`${match.url}/master-officer`}
