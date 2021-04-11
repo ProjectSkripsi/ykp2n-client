@@ -1,13 +1,19 @@
-import axios from "axios";
-import { baseUrl } from "../../constants/defaultValues";
-import { getToken } from "../../helpers/Utils";
+import axios from 'axios';
+import { baseUrl } from '../../constants/defaultValues';
+import { getToken } from '../../helpers/Utils';
 
-export const addSymptomsService = async (code, name, description) => {
+export const addSymptomsService = async (
+  code,
+  name,
+  description,
+  bobot,
+  diagnose
+) => {
   const token = getToken();
   try {
     const response = await axios.post(
       `${baseUrl}/symptoms`,
-      { code, name, description },
+      { code, name, description, bobot, diagnose },
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -21,12 +27,19 @@ export const addSymptomsService = async (code, name, description) => {
   }
 };
 
-export const updateSymptomsService = async (id, code, name, description) => {
+export const updateSymptomsService = async (
+  id,
+  code,
+  name,
+  description,
+  bobot,
+  diagnose
+) => {
   const token = getToken();
   try {
     const response = await axios.put(
-      `${baseUrl}/symptoms/${id}`,
-      { code, name, description },
+      `${baseUrl}/symptoms/${code}`,
+      { code, name, description, bobot, diagnose },
       {
         headers: {
           Authorization: `Bearer ${token}`,

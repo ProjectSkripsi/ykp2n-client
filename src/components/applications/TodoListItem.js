@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Card,
   CardBody,
@@ -15,12 +15,12 @@ import {
   CardFooter,
   CardHeader,
   List,
-} from "reactstrap";
-import { NavLink } from "react-router-dom";
-import moment from "moment";
-import { Colxx } from "../common/CustomBootstrap";
+} from 'reactstrap';
+import { NavLink } from 'react-router-dom';
+import moment from 'moment';
+import { Colxx } from '../common/CustomBootstrap';
 
-import { get } from "lodash";
+import { get } from 'lodash';
 
 const TodoListItem = ({
   item,
@@ -40,8 +40,8 @@ const TodoListItem = ({
     return (
       <List type="unstyled">
         <ul>
-          {data.map((i) => (
-            <li key={i._id}>{i.name}</li>
+          {data.map((i, index) => (
+            <li key={index}>{i.name}</li>
           ))}
         </ul>
       </List>
@@ -57,8 +57,8 @@ const TodoListItem = ({
               <p className="font-weight-medium mb-0 ">
                 <b>{item.name} </b> - {item.age} Tahun | {item.contact}
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                <Badge color={item.result === "Positif" ? "danger" : "info"}>
-                  {item.result} - {item.criteriaStatus}
+                <Badge color={item.result === 'Positif' ? 'danger' : 'info'}>
+                  {item.criteriaStatus}
                 </Badge>
               </p>
             </div>
@@ -74,7 +74,7 @@ const TodoListItem = ({
                 </DropdownToggle>
                 <DropdownMenu>
                   <DropdownItem
-                    onClick={() => onUpdateProgress(item, "criteria")}
+                    onClick={() => onUpdateProgress(item, 'criteria')}
                   >
                     Lihat detail
                   </DropdownItem>
@@ -89,8 +89,8 @@ const TodoListItem = ({
           <div className="mt-4">{renderItem(item.symptomsId)}</div>
         </CardBody>
         <CardFooter className="text-muted">
-          Diperiksa oleh {get(item, "inputBy.name", "-")} -{" "}
-          {moment(item.createdAt).startOf("minutes").fromNow()}
+          Diperiksa oleh {get(item, 'inputBy.name', '-')} -{' '}
+          {moment(item.createdAt).startOf('minutes').fromNow()}
         </CardFooter>
       </Card>
     </Colxx>

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   CustomInput,
   Button,
@@ -8,7 +8,7 @@ import {
   ModalFooter,
   Input,
   Label,
-} from "reactstrap";
+} from 'reactstrap';
 import {
   AvForm,
   AvField,
@@ -17,10 +17,10 @@ import {
   AvFeedback,
   AvRadioGroup,
   AvRadio,
-} from "availity-reactstrap-validation";
-import Select from "react-select";
-import CustomSelectInput from "../../../components/common/CustomSelectInput";
-import IntlMessages from "../../../helpers/IntlMessages";
+} from 'availity-reactstrap-validation';
+import Select from 'react-select';
+import CustomSelectInput from '../../../components/common/CustomSelectInput';
+import IntlMessages from '../../../helpers/IntlMessages';
 
 const AddNewModal = ({
   modalOpen,
@@ -63,7 +63,49 @@ const AddNewModal = ({
             />
             <AvFeedback>Name wajib di isi!</AvFeedback>
           </AvGroup>
-
+          <AvGroup>
+            <Label>Bobot</Label>
+            <AvInput
+              required
+              name="bobot"
+              type="number"
+              value={data.bobot}
+              onChange={onChange}
+            />
+            <AvFeedback>Name wajib di isi!</AvFeedback>
+          </AvGroup>
+          <AvRadioGroup
+            className="error-l-150 "
+            name="diagnose"
+            required
+            value={data.diagnose}
+          >
+            <Label className="d-block mt-4">Diagnosa</Label>
+            <AvRadio
+              customInput
+              onChange={onChange}
+              label="Putaw"
+              value="Putaw"
+            />
+            <AvRadio
+              customInput
+              onChange={onChange}
+              label="Sabu"
+              value="Sabu"
+            />
+            <AvRadio
+              customInput
+              onChange={onChange}
+              label="Alkohol"
+              value="Alkohol"
+            />
+            <AvRadio
+              customInput
+              onChange={onChange}
+              label="Ganja"
+              value="Ganja"
+            />
+          </AvRadioGroup>
           <AvGroup>
             <Label>Keterangan</Label>
             <AvInput

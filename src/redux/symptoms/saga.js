@@ -1,17 +1,24 @@
-import { all, call, fork, put, takeEvery } from "redux-saga/effects";
-import { ADD_SYMPTOMS_REQUEST, UPDATE_SYMPTOMS_REQUEST } from "../actions";
+import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
+import { ADD_SYMPTOMS_REQUEST, UPDATE_SYMPTOMS_REQUEST } from '../actions';
 import {
   addSymptomsSuccess,
   addSymptomsFailure,
   updateSymptomsFailure,
   updateSymptomsSuccess,
-} from "./actions";
-import { addSymptomsService, updateSymptomsService } from "./services";
+} from './actions';
+import { addSymptomsService, updateSymptomsService } from './services';
 
 function* addSymptomsSaga({ payload }) {
-  const { code, name, description, callBack } = payload;
+  const { code, name, description, bobot, diagnose, callBack } = payload;
   try {
-    const response = yield call(addSymptomsService, code, name, description);
+    const response = yield call(
+      addSymptomsService,
+      code,
+      name,
+      description,
+      bobot,
+      diagnose
+    );
 
     if (callBack) {
       callBack(response);
@@ -30,14 +37,16 @@ export function* watchAddSymptomsSaga() {
 }
 
 function* updateSymptomsSaga({ payload }) {
-  const { id, code, name, description, callBack } = payload;
+  const { id, code, name, description, bobot, diagnose, callBack } = payload;
   try {
     const response = yield call(
       updateSymptomsService,
       id,
       code,
       name,
-      description
+      description,
+      bobot,
+      diagnose
     );
 
     if (callBack) {

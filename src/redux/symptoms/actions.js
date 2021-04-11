@@ -5,11 +5,18 @@ import {
   UPDATE_SYMPTOMS_REQUEST,
   UPDATE_SYMPTOMS_SUCCESS,
   UPDATE_SYMPTOMS_ERROR,
-} from "../actions";
+} from '../actions';
 
-export const addSymptomsRequest = (code, name, description, callBack) => ({
+export const addSymptomsRequest = (
+  code,
+  name,
+  description,
+  bobot,
+  diagnose,
+  callBack
+) => ({
   type: ADD_SYMPTOMS_REQUEST,
-  payload: { code, name, description, callBack },
+  payload: { code, name, description, bobot, diagnose, callBack },
 });
 
 export const addSymptomsSuccess = (response, types) => ({
@@ -27,10 +34,12 @@ export const updateSymptomsRequest = (
   code,
   name,
   description,
+  bobot,
+  diagnose,
   callBack
 ) => ({
   type: UPDATE_SYMPTOMS_REQUEST,
-  payload: { id, code, name, description, callBack },
+  payload: { id, code, name, description, bobot, diagnose, callBack },
 });
 
 export const updateSymptomsSuccess = (response, types) => ({
