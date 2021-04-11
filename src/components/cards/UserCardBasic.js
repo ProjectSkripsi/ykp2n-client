@@ -1,10 +1,10 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import { Card, CardBody, CardSubtitle, CardText } from "reactstrap";
-import ThumbnailImage from "./ThumbnailImage";
-import { ContextMenuTrigger } from "react-contextmenu";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { Card, CardBody, CardSubtitle, CardText } from 'reactstrap';
+import ThumbnailImage from './ThumbnailImage';
+import { ContextMenuTrigger } from 'react-contextmenu';
 
-const UserCardBasic = ({ link = "#", data, collect }) => {
+const UserCardBasic = ({ link = '#', data, collect }) => {
   return (
     <ContextMenuTrigger id="menu_id" data={data} collect={collect}>
       <Card className="d-flex flex-row mb-4">
@@ -12,7 +12,7 @@ const UserCardBasic = ({ link = "#", data, collect }) => {
           <ThumbnailImage
             rounded
             small
-            src={data.avatarUrl || "/assets/img/profiles/l-9.jpg"}
+            src={data.avatarUrl || '/assets/img/profiles/undipa.png'}
             alt="profile"
             className="m-4"
           />
