@@ -1,7 +1,7 @@
 {
-  "name": "tweet-vector-model",
+  "name": "ypk2n",
   "version": "5.2.0",
-  "description": "tweet-vector-model",
+  "description": "ypk2n",
   "private": true,
   "dependencies": {
     "@glidejs/glide": "^3.4.1",
