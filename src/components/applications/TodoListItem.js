@@ -31,6 +31,7 @@ const TodoListItem = ({
   assignMining,
   onUpdateProgress,
   className,
+  onProccess,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
@@ -57,7 +58,7 @@ const TodoListItem = ({
               <p className="font-weight-medium mb-0 ">
                 <b>{item.name} </b> - {item.age} Tahun | {item.contact}
                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                <Badge color={item.result === 'Positif' ? 'danger' : 'info'}>
+                <Badge color={item.resultCode === 4 ? 'info' : 'danger'}>
                   {item.criteriaStatus}
                 </Badge>
               </p>
@@ -78,6 +79,11 @@ const TodoListItem = ({
                   >
                     Lihat detail
                   </DropdownItem>
+                  {item.analyse && (
+                    <DropdownItem onClick={() => onProccess(item, 'criteria')}>
+                      Lihat Proses
+                    </DropdownItem>
+                  )}
                   <hr />
                   <DropdownItem onClick={() => deleteData(item._id)}>
                     Hapus
@@ -90,7 +96,7 @@ const TodoListItem = ({
         </CardBody>
         <CardFooter className="text-muted">
           Diperiksa oleh {get(item, 'inputBy.name', '-')} -{' '}
-          {moment(item.createdAt).startOf('minutes').fromNow()}
+          {moment(item.createdAt).startOf('second').fromNow()}
         </CardFooter>
       </Card>
     </Colxx>

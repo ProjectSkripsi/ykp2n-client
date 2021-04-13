@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import {
   Row,
   Button,
@@ -8,30 +8,33 @@ import {
   DropdownItem,
   DropdownMenu,
   Collapse,
-} from "reactstrap";
-import { injectIntl } from "react-intl";
-import { connect } from "react-redux";
-import { getToken } from "../../../helpers/Utils";
-import IntlMessages from "../../../helpers/IntlMessages";
-import { Colxx, Separator } from "../../../components/common/CustomBootstrap";
-import Breadcrumb from "../../../containers/navs/Breadcrumb";
-import axios from "axios";
-import { baseUrl } from "../../../constants/defaultValues";
+} from 'reactstrap';
+import { injectIntl } from 'react-intl';
+import { connect } from 'react-redux';
+import { getToken } from '../../../helpers/Utils';
+import IntlMessages from '../../../helpers/IntlMessages';
+import { Colxx, Separator } from '../../../components/common/CustomBootstrap';
+import Breadcrumb from '../../../containers/navs/Breadcrumb';
+import axios from 'axios';
+import { baseUrl } from '../../../constants/defaultValues';
 import {
   getTodoList,
   getTodoListWithOrder,
   getTodoListSearch,
   selectedTodoItemsChange,
-} from "../../../redux/actions";
-import TodoListItem from "../../../components/applications/TodoListItem";
-import Pagination from "../../../components/Model/Pagination";
-import { NotificationManager } from "../../../components/common/react-notifications";
-// import ModalProgress from "../../../components/complaint/ModalProgress";
+} from '../../../redux/actions';
+import TodoListItem from '../../../components/applications/TodoListItem';
+import Pagination from '../../../components/Model/Pagination';
+import { NotificationManager } from '../../../components/common/react-notifications';
 
 const ModalProgress = React.lazy(() =>
   import(
-    /* webpackChunkName: "dashboard-default" */ "../../../components/complaint/ModalProgress"
+    /* webpackChunkName: "dashboard-default" */ '../../../components/complaint/ModalProgress'
   )
+);
+
+const ModalProcces = React.lazy(() =>
+  import(/* webpackChunkName: "dashboard-default" */ './modalProcces')
 );
 
 const getIndex = (value, arr, prop) => {
@@ -62,22 +65,23 @@ const DataTweet = ({
 
   const [selectedPageSize, setSelectedPageSize] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
   const [selectedOrderOption, setSelectedOrderOption] = useState({
-    column: "newest",
-    label: "Terbaru",
+    column: 'newest',
+    label: 'Terbaru',
   });
   const [totalItemCount, setTotalItemCount] = useState(0);
   const [totalPage, setTotalPage] = useState(1);
   const [items, setItems] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [selectedProgress, setSelectedProgress] = useState({});
+  const [modalProccess, setModalProccess] = useState(false);
 
   useEffect(() => {
-    document.body.classList.add("right-menu");
+    document.body.classList.add('right-menu');
     setCurrentPage(1);
     return () => {
-      document.body.classList.remove("right-menu");
+      document.body.classList.remove('right-menu');
     };
   }, [selectedPageSize]);
 
@@ -146,24 +150,24 @@ const DataTweet = ({
         return res.data;
       })
       .then((data) => {
-        createNotification("success", "Berhasil hapus data pasien");
+        createNotification('success', 'Berhasil hapus data pasien');
         fetchNewUpdate();
       })
       .catch((error) => {
-        createNotification("error");
+        createNotification('error');
       });
   };
 
   const createNotification = (type, msg, className) => {
-    const cName = className || "";
+    const cName = className || '';
     switch (type) {
-      case "success":
-        NotificationManager.success("Sukses!", msg, 3000, null, null, cName);
+      case 'success':
+        NotificationManager.success('Sukses!', msg, 3000, null, null, cName);
         break;
-      case "error":
+      case 'error':
         NotificationManager.error(
-          "Terjadi Kesalahan!",
-          "Silahkan coba beberapa saat!",
+          'Terjadi Kesalahan!',
+          'Silahkan coba beberapa saat!',
           3000,
           null,
           null,
@@ -171,7 +175,7 @@ const DataTweet = ({
         );
         break;
       default:
-        NotificationManager.info("Info message");
+        NotificationManager.info('Info message');
         break;
     }
   };
@@ -200,15 +204,15 @@ const DataTweet = ({
           return res.data;
         })
         .then((data) => {
-          createNotification("success", "Berhasil update klasifikasi");
+          createNotification('success', 'Berhasil update klasifikasi');
           fetchNewUpdate();
           setModalProgressOpen(false);
         })
         .catch((error) => {
-          createNotification("error");
+          createNotification('error');
         });
     } else {
-      createNotification("error");
+      createNotification('error');
     }
   };
 
@@ -244,7 +248,7 @@ const DataTweet = ({
               className="pt-0 pl-0 d-inline-block d-md-none"
               onClick={() => setDisplayOptionsIsOpen(!displayOptionsIsOpen)}
             >
-              <IntlMessages id="todo.display-options" />{" "}
+              <IntlMessages id="todo.display-options" />{' '}
               <i className="simple-icon-arrow-down align-middle" />
             </Button>
             <Collapse
@@ -256,7 +260,7 @@ const DataTweet = ({
                 <UncontrolledDropdown className="mr-1 float-md-left btn-group mb-1">
                   <DropdownToggle caret color="outline-dark" size="xs">
                     <IntlMessages id="todo.orderby" />
-                    {orderColumn ? orderColumn.label : ""}
+                    {orderColumn ? orderColumn.label : ''}
                   </DropdownToggle>
                   <DropdownMenu>
                     {orderColumns.map((o, index) => {
@@ -273,9 +277,9 @@ const DataTweet = ({
                     type="text"
                     name="keyword"
                     id="search"
-                    placeholder={messages["menu.search"]}
+                    placeholder={messages['menu.search']}
                     onKeyPress={(e) => {
-                      if (e.key === "Enter") {
+                      if (e.key === 'Enter') {
                         setSearch(e.target.value.toLowerCase());
                       }
                     }}
@@ -300,6 +304,10 @@ const DataTweet = ({
                       setModalProgressOpen(true);
                       setSelectedProgress(data);
                     }}
+                    onProccess={(data) => {
+                      setModalProccess(true);
+                      setSelectedProgress(data);
+                    }}
                   />
                 );
               })
@@ -314,6 +322,11 @@ const DataTweet = ({
           </Row>
         </Colxx>
       </Row>
+      <ModalProcces
+        setModalProccess={setModalProccess}
+        modalProccess={modalProccess}
+        data={selectedProgress}
+      />
     </>
   );
 };
